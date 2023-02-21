@@ -12,7 +12,7 @@
     - tty (t) : 터미널 세션을 통해 컨테이너 조작
     - detach (d) : 백그라운드에서 실행
     - publish (p) : 컨테이너 포트를 호스트 컴퓨터에 공개
-    -
+  
 - 명령어
     - docker container logs : 컨테이너에서 수집된 모든 로그 출력
     - docker container inspect : 컨테이너 상세 정보 출력

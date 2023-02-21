@@ -7,9 +7,9 @@ RUN chmod +x /server
 # app
 FROM diamol/base
 
-EXPOSE 80
 CMD ["/web/server"]
-ENV USER="sixeyed"
+ENV USER=sixeyed
+EXPOSE 80
 
 WORKDIR web
 COPY --from=builder /server .

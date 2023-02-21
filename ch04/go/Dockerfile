@@ -2,15 +2,15 @@ FROM diamol/golang AS builder
 
 COPY main.go .
 RUN go build -o /server
-RUN chmod +x /server
 
 # app
 FROM diamol/base
+ENV IMAGE_API_URL="http://iotd/image" \
+    ACCESS_API_URL="http://accesslog/access-log"
 
-EXPOSE 80
 CMD ["/web/server"]
-ENV USER="sixeyed"
 
-WORKDIR web
-COPY --from=builder /server .
+WORKDIR /web
 COPY index.html .
+COPY --from=builder /server .
+RUN chmod +x server

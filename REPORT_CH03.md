@@ -1,5 +1,5 @@
 
-## 3장 . 
+## 3장 . 도커이미지 만들기
 
 ## 학습 ##
 - 도커 컨테이너도 별도의 환경 변수를 가질 수 있다 > 호스트 컴퓨터의 것 아니고 도커가 부여해줌
@@ -20,7 +20,16 @@
   - docker images build --tag web-ping : 이미지 빌드
   - docker images build -t web-ping:v2 : 이미지 빌드2-버전추가 (*버전 미설정시 기본 latest)
   - docker image history web-ping : 이미지 히스토리 확인
-  - 
+  
+## Dockerfile 인스트럭션
+- FROM : 이미지 시작점. 모든 이미지는 다른 이미지로부터 출발
+- ENV :  환경 변수값지정. key=value 형태
+- WORKDIR :  컨테이너안 파일시스템에 디렉터리를 만들고, 해당 디렉터리를 작업 디렉터리로 지정
+- COPY : 로컬 파일시스템을 컨테이너안 이미지로 복사
+- CMD : 컨테이너 실행시 실행할 면령어 지정
+- ENTRYPOIN : CMD와 같음
+- RUN : 빌드중 컨테이너안 명령어를 실행(?_?)
+- EXPOSE : 호스트 컴퓨터 open포트
 
 ## 실습 ##
 # 1. 대화형으로 컨테이너 실행
