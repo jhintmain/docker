@@ -6,7 +6,7 @@ services:
   todo-web:
     image: diamol/ch06-todo-list
     ports:
-      - "8020:80"
+      - "82:80"
     environment:
       - Database:Provider=Sqlite
     networks:
