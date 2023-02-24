@@ -11,3 +11,46 @@
 - 어플리케이션 컨테이너에서 측정된 수치를 수집.
 
 ## 실습 ##
+- ch04의 3가지 기능 프로메테우스와 연동
+- docker-compose.yml 파일 작성
+- version: "3.7"
+
+services:
+accesslog:
+image: diamol/ch09-access-log
+ports:
+- "82:80"
+networks:
+- app-net
+
+iotd:
+image: diamol/ch09-image-of-the-day
+ports:
+- "81:80"
+networks:
+- app-net
+
+image-gallery:
+image: diamol/ch09-image-gallery
+ports:
+- "80:80"
+depends_on:
+- accesslog
+- iotd
+networks:
+- app-net
+
+prometheus:
+image: diamol/ch09-prometheus
+ports:
+- "9090:9090"
+environment:
+- DOCKER_HOST=${HOST_IP}
+networks:
+- app-net
+
+networks:
+app-net:
+external:
+name: nat
+
